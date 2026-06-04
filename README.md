@@ -8,10 +8,8 @@ A comprehensive **Object-Oriented C++ application** for converting physical meas
 - [Architecture](#architecture)
 - [Measurement Types](#measurement-types)
 - [Project Structure](#project-structure)
-- [Class Hierarchy](#class-hierarchy)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Code Examples](#code-examples)
 - [Requirements](#requirements)
 - [Contributing](#contributing)
 - [License](#license)
@@ -156,62 +154,19 @@ Unit_Converter_System/
 └── Makefile                  # Build configuration (optional)
 ```
 
-## Class Hierarchy
-
-### Parent Class: `ConversionSystem`
-
-```cpp
-class ConversionSystem {
-public:
-    ConversionSystem();
-    virtual ~ConversionSystem();
-    
-    virtual void displayOptions() = 0;
-    virtual void convert() = 0;
-    void startMenu();
-    
-protected:
-    double inputValue;
-    int selectedOption;
-};
-```
-
-### Child Class Example: `Temperature`
-
-```cpp
-class Temperature : public ConversionSystem {
-public:
-    Temperature();
-    
-    void displayOptions() override;
-    void convert() override;
-    
-private:
-    double celsiusToFahrenheit(double celsius);
-    double celsiusToKelvin(double celsius);
-    double fahrenheitToCelsius(double fahrenheit);
-    // ... other conversion methods
-};
-```
-
 ## Installation
 
 ### Prerequisites
 
-- **C++ Compiler** (C++11 or later)
-  - GCC 5.0+
-  - Clang 3.8+
-  - MSVC 2015+
-- **Build Tool** (optional)
-  - Make
-  - CMake
+- **C++ Compiler** (GCC, Clang, MSVC, or equivalent)
+- **Standard C++ Library**
 
 ### Compilation
 
 #### Using g++ (GNU C++ Compiler)
 
 ```bash
-g++ -std=c++11 -o UnitConverter main.cpp ConversionSystem.cpp \
+g++ -o UnitConverter main.cpp ConversionSystem.cpp \
     Temperature.cpp Length.cpp Mass.cpp Angle.cpp \
     Pressure.cpp Speed.cpp Energy.cpp Frequency.cpp
 ```
@@ -222,13 +177,18 @@ g++ -std=c++11 -o UnitConverter main.cpp ConversionSystem.cpp \
 make
 ```
 
-#### Using CMake
+#### Using Other Compilers
 
 ```bash
-mkdir build
-cd build
-cmake ..
-make
+# Clang
+clang++ -o UnitConverter main.cpp ConversionSystem.cpp \
+    Temperature.cpp Length.cpp Mass.cpp Angle.cpp \
+    Pressure.cpp Speed.cpp Energy.cpp Frequency.cpp
+
+# MSVC (on Windows)
+cl /o UnitConverter.exe main.cpp ConversionSystem.cpp ^
+    Temperature.cpp Length.cpp Mass.cpp Angle.cpp ^
+    Pressure.cpp Speed.cpp Energy.cpp Frequency.cpp
 ```
 
 ## Usage
@@ -268,7 +228,9 @@ make
 
 6. Choose to perform another conversion or exit
 
-## Code Examples
+## Usage Examples
+
+**Note:** The following are example outputs demonstrating how the program works:
 
 ### Example 1: Converting Temperature
 
@@ -313,30 +275,6 @@ Current unit: kilometers per hour
 - C++ Standard Library (STL)
 - Standard input/output (iostream)
 
-## Implementation Details
-
-### Conversion Methods
-
-Each child class implements:
-
-1. **Direct Conversion Functions** - Convert from one unit to another
-2. **Reference Unit Conversion** - Convert through a standard unit (usually SI)
-3. **Error Handling** - Validate input ranges and prevent invalid conversions
-
-### Formula Examples
-
-**Temperature:** 
-- °F = (°C × 9/5) + 32
-- K = °C + 273.15
-
-**Length:**
-- 1 meter = 1000 millimeters
-- 1 mile = 1.60934 kilometers
-
-**Speed:**
-- 1 m/s = 3.6 km/h
-- 1 mph = 0.44704 m/s
-
 ## Contributing
 
 Contributions are welcome! To contribute:
@@ -375,7 +313,7 @@ git clone https://github.com/PanSoulas/Unit_Converter_System.git
 cd Unit_Converter_System
 
 # Compile
-g++ -std=c++11 -o UnitConverter *.cpp
+g++ -o UnitConverter *.cpp
 
 # Run
 ./UnitConverter
