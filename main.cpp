@@ -4,13 +4,13 @@
 #include <cmath>
 #include <vector>
 #include <string>
-
+#include <exception>
 
 using std::cout;   using std::endl;
 using std::cin;    using std::set;
 using std::string; using std::vector;
-using std::pair;
-
+using std::pair;   using std::cerr;
+using std::exception; using std::runtime_error;
 
 class ConverterSystem{
     protected:
@@ -22,7 +22,8 @@ class ConverterSystem{
                                                             {'E', "Pressure"},
                                                             {'F', "Speed"},
                                                             {'G', "Energy"},
-                                                            {'H', "Frequency"}
+                                                            {'H', "Frequency"},
+                                                            {'0', "Exit"}
                                                             };
         const vector<pair<char, char>> acceptable_options = { {'a', 'A'},
                                                             {'b', 'B'},
@@ -31,11 +32,35 @@ class ConverterSystem{
                                                             {'e', 'E'},
                                                             {'f', 'F'},
                                                             {'g', 'G'},
-                                                            {'h', 'H'}};
+                                                            {'h', 'H'},
+                                                            {'0', '0'}};
         char user_choice;
     public:
         ConverterSystem() =  default;
 
+        //Getter for choice of user
+        char getUserChoice(){
+            return user_choice;
+        }
+
+        void getChoice(){
+            while (true)
+            {
+                try
+                {
+                    cout << "Your choice is : " ;
+                    cin >> user_choice;
+                    validate_User_Choice(user_choice, acceptable_options);
+                    break;
+                }
+                catch(const exception& e)
+                {
+                    cerr << e.what() << '\n';
+                }
+            }
+        }
+
+        //Menu
         virtual void printMenu(){
             cout << "====================" << endl;
             cout << "      Welcome       " << endl;
@@ -50,76 +75,23 @@ class ConverterSystem{
             }
         }                                    
         
-        virtual bool validate_User_Choice(char user_choice, const vector<pair<char, char>> &acceptable_options){
+        //Validate choice
+        virtual void validate_User_Choice(char user_choice, const vector<pair<char, char>> &acceptable_options){
             for (auto choice : acceptable_options)
             {
                 if (user_choice == choice.first || user_choice == choice.second)
                 {
-                    return true;
+                    return ;
                 }
             }
-            return false;
+            throw runtime_error("Invalid input! Please choose between the following options");
         }
 
 
-        virtual void startSystetm(){
+        //The system starts
+        virtual void startSystem(){
             printMenu();
-
-
-            cout << "Your choice is : " ;
-            cin >> user_choice;
-
-            while (validate_User_Choice(user_choice, acceptable_options) == false)
-            {
-                cout << "Invalid input. Please choose one of the following options ! " << endl;
-                for (auto option : available_options)
-                {
-                    cout << option.first << ") " << option.second << endl;
-                }
-                cin >> user_choice;
-            }
-
-            if (user_choice == 'a' || user_choice == 'A')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'b' || user_choice == 'B')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'c' || user_choice == 'C')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'd' || user_choice == 'D')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'e' || user_choice == 'E')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'f' || user_choice == 'F')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'g' || user_choice == 'G')
-            {
-                /* code */
-            }
-
-            if (user_choice == 'h' || user_choice == 'H')
-            {
-                /* code */
-            }
-
-            
+            getChoice();
         }
 };
 
@@ -130,11 +102,31 @@ class TemperatureSystem : public ConverterSystem{
         const vector<pair<unsigned int, string>> temperature_options = {{1, "Celsius"},
                                                         {2, "Fahrenheit"},
                                                         {3, "Kelvin"},
-                                                        {4, "Rankine"}};
-        const vector<unsigned int> acceptable_temperature_options = {1, 2, 3, 4};
+                                                        {4, "Rankine"},
+                                                        {0, "Exit Temperature System"}};
+        const vector<unsigned int> acceptable_temperature_options = {1, 2, 3, 4, 0};
         float temperature;
     public:
         TemperatureSystem() = default;
+
+        void getChoice(){
+            while (true)
+            {
+                try
+                {
+                    cout << "Choose : " ;
+                    cin >> user_choice;
+                    cout << '\n';
+                    cout << "You have chosen : " << user_choice << endl;
+                    validate_User_Choice(user_choice, acceptable_temperature_options);
+                    break;
+                }
+                catch(const std::exception& e)
+                {
+                    std::cerr << e.what() << '\n';
+                }   
+            }
+        }
 
         void printMenu(){
             cout << "-------------------- \n";
@@ -147,71 +139,62 @@ class TemperatureSystem : public ConverterSystem{
             }
         }
 
-        bool validate_User_Choice(unsigned int user_choice, const vector<unsigned int> &acceptable_temperature_options ) {
+        void validate_User_Choice(unsigned int user_choice, const vector<unsigned int> &acceptable_temperature_options ) {
             for (auto option : acceptable_temperature_options)
             {
                 if(user_choice == option){
-                    return true;
+                    return ;
                 }
             }
-            return false;
+            throw runtime_error("Invalid input! ");
         }
+
         
         void startSystem(){
             printMenu();    
-            
-            cout << "Choose : " ;
-            cin >> user_choice;
-            cout << '\n';
-            cout << "You have chosen : " << user_choice << endl;
+            getChoice();
 
-            while (validate_User_Choice(user_choice, acceptable_temperature_options) == false)
-            {
-                cout << "Invalid input. Please choose one of the following options ! " << endl;
-                for (auto option : acceptable_temperature_options)
+
+            while(true){
+                if (user_choice == 1)
                 {
-                    cout << option << endl;
+                    celsius_To(temperature);
                 }
-                cin >> user_choice;
-            }
 
+                if (user_choice == 2)
+                {
+                    fahrenheit_To(temperature);
+                }
+                
+                if (user_choice == 3)
+                {
+                    kelvin_To(temperature);
+                }
+
+                if (user_choice == 4)
+                {
+                    rankine_To(temperature);
+                }
+
+                cout << "Press 0 to go back to main menu, or any key to continue: ";
+            }
+        }
+        
+        
+        void celsius_To(float temperature){
             cout << "Please insert the value of the temperature you want to convert: " << endl;
             cout << "Temperature = ";
             cin >> temperature;
             cout << "\n";
-
-            if (user_choice == 1)
-            {
-                celsius_To(temperature);
-            }
-
-            if (user_choice == 2)
-            {
-                fahrenheit_To(temperature);
-            }
-            
-            if (user_choice == 3)
-            {
-                kelvin_To(temperature);
-            }
-
-            if (user_choice == 4)
-            {
-                rankine_To(temperature);
-            }
-        }
-
-
-        void celsius_To(float temperature){
-            cout << "User's temperature for measurement is : " << temperature << "Celsius (\u00B0C)" << endl;
+            cout << "User's temperature for measurement is : " << temperature << " Celsius (\u00B0C)" << endl;
 
             cout << "In Fahrenheit (\u00B0F): ";
             float fahrenheit = (temperature * 1.8) + 32.0;
-            cout << fahrenheit << "\u00B0F" << endl; 
+            cout << fahrenheit << " \u00B0F" << endl; 
 
             cout << "In Kelvin (K): " ;
             float kelvin = temperature + 273.15;
-            cout << kelvin << "K" << endl;
+            cout << kelvin << " K" << endl;
 
             cout << "In Rankine (R) : ";
             float rankine = fahrenheit + 459.67;
@@ -219,15 +202,19 @@ class TemperatureSystem : public ConverterSystem{
         }
 
         void fahrenheit_To(float temperature){
-            cout << "User's temperature for measurement is : " << temperature << "Fahrenheit (\u00B0F)" << endl;;
+            cout << "Please insert the value of the temperature you want to convert: " << endl;
+            cout << "Temperature = ";
+            cin >> temperature;
+            cout << "\n";
+            cout << "User's temperature for measurement is : " << temperature << " Fahrenheit (\u00B0F)" << endl;;
 
             cout << "In Celsius (\u00B0C): ";
             float celsius = (temperature - 32.0) / 1.8;
-            cout << celsius << "\u00B0C" << endl; 
+            cout << celsius << " \u00B0C" << endl; 
 
             cout << "In Kelvin (K): " ;
             float kelvin = ((temperature - 32) / 1.8) + 273.15;
-            cout << kelvin << "K" << endl;
+            cout << kelvin << " K" << endl;
 
             cout << "In Rankine (R) : ";
             float rankine = temperature + 459.67;
@@ -235,37 +222,101 @@ class TemperatureSystem : public ConverterSystem{
         }   
 
         void kelvin_To(float temperature){
-            cout << "User's temperature for measurement is : " << temperature << "Kelvin (K)" << endl;
+            cout << "Please insert the value of the temperature you want to convert: " << endl;
+            cout << "Temperature = ";
+            cin >> temperature;
+            cout << "\n";
+            cout << "User's temperature for measurement is : " << temperature << " Kelvin (K)" << endl;
 
             cout << "In Celsius (\u00B0C): ";
             float celsius = temperature - 273.15;
-            cout << celsius << "\u00B0C" << endl;
+            cout << celsius << " \u00B0C" << endl;
 
             cout << "In Fahrenheit (\u00B0F): ";
             float fahrenheit = ((temperature - 273.15) * 1.8) + 32.0;
-            cout << fahrenheit << "\u00B0F" << endl;
+            cout << fahrenheit << " \u00B0F" << endl;
 
             cout << "In Rankine (R): ";
             float rankine = 1.8 * temperature;
-            cout << rankine << "R" << endl;
+            cout << rankine << " R" << endl;
         }
 
         void rankine_To(float temperature){
-            cout << "User's temperature for measurement is : " << temperature << "Rankine (R)" << endl;
+            cout << "Please insert the value of the temperature you want to convert: " << endl;
+            cout << "Temperature = ";
+            cin >> temperature;
+            cout << "\n";
+            cout << "User's temperature for measurement is : " << temperature << " Rankine (R)" << endl;
 
             cout << "In Celsius (\u00B0C): ";
             float celsius = (temperature - 491.67) / 1.8;
-            cout << celsius << "\u00B0C" << endl;
+            cout << celsius << " \u00B0C" << endl;
 
             cout << "In Fahrenheit (\u00B0F): ";
             float fahrenheit = temperature - 459.67;
-            cout << fahrenheit << "\u00B0F" << endl;
+            cout << fahrenheit << " \u00B0F" << endl;
 
             cout << "In Kelvin (K): " ;
             float kelvin = temperature / 1.8;
-            cout << kelvin << "K" << endl;
+            cout << kelvin << " K" << endl;
         }
 };
 
 int main(){
+    ConverterSystem object_converter_system;
+    object_converter_system.startSystem();
+    while (true)
+    {
+        char choosing = object_converter_system.getUserChoice();
+        if ( choosing == 'a' || choosing == 'A')
+        {
+            TemperatureSystem object_temperature;
+            object_temperature.startSystem();
+        }
+        /*
+        if (choosing == 'b' || choosing == 'B')
+        {
+            
+        }
+        
+        if (choosing == 'c' || choosing == 'C')
+        {
+            
+            }
+            
+            if (choosing == 'd' || choosing == 'D')
+            {
+            }
+
+            if (choosing == 'e' || choosing == 'E')
+            {
+                
+        }
+        
+            if (choosing== 'f' || choosing == 'F')
+            {
+                
+        }
+
+            if (choosing == 'g' || choosing == 'G')
+            {
+                
+        }
+        
+        if (choosing == 'h' || choosing == 'H')
+            {
+                
+        }
+    
+        */
+        if (choosing == '0')
+        {
+            cout << "Closing \n";
+            break;
+        }
+        
+        object_converter_system.getChoice();
+    }
+
+    return 0;
 }
