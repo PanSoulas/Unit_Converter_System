@@ -109,7 +109,7 @@ class TemperatureSystem : public ConverterSystem{
     public:
         TemperatureSystem() = default;
 
-        unsigned int getChoice(){
+        void getChoice(){
             while (true)
             {
                 try
@@ -117,16 +117,23 @@ class TemperatureSystem : public ConverterSystem{
                     cout << "Choose : " ;
                     cin >> user_choice;
                     cout << '\n';
+
+                    //in case of missclick (bad state of cin)
+                    if(cin.fail() || cin.peek() != '\n'){
+                        cin.clear();       
+                        cin.ignore(1000, '\n');  
+                        throw runtime_error("Invalid input!");
+                    }
+
                     cout << "You have chosen : " << user_choice << endl;
                     validate_User_Choice(user_choice, acceptable_temperature_options);
                     break;
                 }
-                catch(const std::exception& e)
+                catch(const exception& e)
                 {
-                    std::cerr << e.what() << '\n';
+                    cerr << e.what() << '\n';
                 }   
             }
-            return user_choice;
         }
 
         void printMenu(){
@@ -150,19 +157,47 @@ class TemperatureSystem : public ConverterSystem{
             throw runtime_error("Invalid input! ");
         }
 
+        float getTemperature(){
+            while (true)
+            {
+                try
+                {
+                    cin >> temperature;
+                    cout << "\n";
+    
+                    //In case of invalid inpute (example temperature = 1/2)
+                    if(cin.fail() || cin.peek() != '\n'){
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+                        throw runtime_error("Invalid input! Please enter a valid number.");
+                    }
+                    break;
+                }
+                catch(const exception& e)
+                {
+                    std::cerr << e.what() << '\n';
+                }
+            }
+
+            return temperature;
+        }
         
         void startSystem(){
             printMenu();    
             
             while(true){
                 getChoice();
-
+                
                 if (user_choice == 0)
                 {
                     cout << "Returning to Main Menu !" << endl;
                     break;
                 }
 
+                cout << "Please insert the value of the temperature you want to convert: " << endl;
+                cout << "Temperature = ";
+                temperature = getTemperature();
+                
                 if (user_choice == 1)
                 {
                     celsius_To(temperature);
@@ -187,10 +222,6 @@ class TemperatureSystem : public ConverterSystem{
         
         
         void celsius_To(float temperature){
-            cout << "Please insert the value of the temperature you want to convert: " << endl;
-            cout << "Temperature = ";
-            cin >> temperature;
-            cout << "\n";
             cout << "User's temperature for measurement is : " << temperature << " Celsius (\u00B0C)" << endl;
 
             cout << "In Fahrenheit (\u00B0F): ";
@@ -207,10 +238,6 @@ class TemperatureSystem : public ConverterSystem{
         }
 
         void fahrenheit_To(float temperature){
-            cout << "Please insert the value of the temperature you want to convert: " << endl;
-            cout << "Temperature = ";
-            cin >> temperature;
-            cout << "\n";
             cout << "User's temperature for measurement is : " << temperature << " Fahrenheit (\u00B0F)" << endl;;
 
             cout << "In Celsius (\u00B0C): ";
@@ -227,10 +254,6 @@ class TemperatureSystem : public ConverterSystem{
         }   
 
         void kelvin_To(float temperature){
-            cout << "Please insert the value of the temperature you want to convert: " << endl;
-            cout << "Temperature = ";
-            cin >> temperature;
-            cout << "\n";
             cout << "User's temperature for measurement is : " << temperature << " Kelvin (K)" << endl;
 
             cout << "In Celsius (\u00B0C): ";
@@ -247,10 +270,6 @@ class TemperatureSystem : public ConverterSystem{
         }
 
         void rankine_To(float temperature){
-            cout << "Please insert the value of the temperature you want to convert: " << endl;
-            cout << "Temperature = ";
-            cin >> temperature;
-            cout << "\n";
             cout << "User's temperature for measurement is : " << temperature << " Rankine (R)" << endl;
 
             cout << "In Celsius (\u00B0C): ";
