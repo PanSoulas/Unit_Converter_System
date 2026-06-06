@@ -109,7 +109,7 @@ class TemperatureSystem : public ConverterSystem{
     public:
         TemperatureSystem() = default;
 
-        void getChoice(){
+        unsigned int getChoice(){
             while (true)
             {
                 try
@@ -126,6 +126,7 @@ class TemperatureSystem : public ConverterSystem{
                     std::cerr << e.what() << '\n';
                 }   
             }
+            return user_choice;
         }
 
         void printMenu(){
@@ -152,10 +153,16 @@ class TemperatureSystem : public ConverterSystem{
         
         void startSystem(){
             printMenu();    
-            getChoice();
-
-
+            
             while(true){
+                getChoice();
+
+                if (user_choice == 0)
+                {
+                    cout << "Returning to Main Menu !" << endl;
+                    break;
+                }
+
                 if (user_choice == 1)
                 {
                     celsius_To(temperature);
@@ -175,8 +182,6 @@ class TemperatureSystem : public ConverterSystem{
                 {
                     rankine_To(temperature);
                 }
-
-                cout << "Press 0 to go back to main menu, or any key to continue: ";
             }
         }
         
