@@ -43,6 +43,20 @@ class ConverterSystem{
             return user_choice;
         }
 
+        void printHeader(){
+            cout << "=====================" << endl;
+            cout << "    Convert System       " << endl;
+            cout << "=====================" << endl;
+            cout << "\n";
+        }
+
+        void printOptions(){
+            for (auto option : available_options)
+            {
+                cout << option.first << ") " << option.second << endl; 
+            }
+        }
+
         void getChoice(){
             while (true)
             {
@@ -50,31 +64,36 @@ class ConverterSystem{
                 {
                     cout << "Your choice is : " ;
                     cin >> user_choice;
+                    //in case of missclick (bad state of cin)
+                    if(cin.fail() || cin.peek() != '\n'){
+                        cin.clear();       
+                        cin.ignore(1000, '\n');  
+                        throw runtime_error("Invalid input!");
+                    }
                     validate_User_Choice(user_choice, acceptable_options);
                     break;
                 }
                 catch(const exception& e)
                 {
                     cerr << e.what() << '\n';
+                    printOptions();
                 }
             }
         }
 
         //Menu
         virtual void printMenu(){
-            cout << "====================" << endl;
-            cout << "      Welcome       " << endl;
-            cout << "====================" << endl;
+            cout << "=================================" << endl;
+            cout << "  Welcome to the Convert System       " << endl;
+            cout << "=================================" << endl;
             cout << "\n";
             cout << " - Thank you for using the Converter System <3 " << endl;
             cout << " - Please choose which physical unit you want to convert - " << endl;
 
-            for (auto option : available_options)
-            {
-                cout << option.first << ") " << option.second << endl; 
-            }
+            printOptions();
         }                                    
-        
+
+     
         //Validate choice
         virtual void validate_User_Choice(char user_choice, const vector<pair<char, char>> &acceptable_options){
             for (auto choice : acceptable_options)
@@ -84,7 +103,7 @@ class ConverterSystem{
                     return ;
                 }
             }
-            throw runtime_error("Invalid input! Please choose between the following options");
+            throw runtime_error("Invalid input! Please choose between the following options ");
         }
 
 
@@ -109,6 +128,12 @@ class TemperatureSystem : public ConverterSystem{
     public:
         TemperatureSystem() = default;
 
+        void printOptions(){
+            for(auto option : temperature_options){
+                cout << option.first << ") " << option.second << endl;
+            }
+        }
+
         void getChoice(){
             while (true)
             {
@@ -132,6 +157,7 @@ class TemperatureSystem : public ConverterSystem{
                 catch(const exception& e)
                 {
                     cerr << e.what() << '\n';
+                    printOptions();
                 }   
             }
         }
@@ -142,9 +168,7 @@ class TemperatureSystem : public ConverterSystem{
             cout << "-------------------- \n";
             cout << "Here are the S.I. measurement units for Temperature ! " << endl;
 
-            for(auto option : temperature_options){
-                cout << option.first << ") " << option.second << endl;
-            }
+            printOptions();
         }
 
         void validate_User_Choice(unsigned int user_choice, const vector<unsigned int> &acceptable_temperature_options ) {
@@ -154,7 +178,7 @@ class TemperatureSystem : public ConverterSystem{
                     return ;
                 }
             }
-            throw runtime_error("Invalid input! ");
+            throw runtime_error("Invalid input! Please choose between the following: \n");
         }
 
         float getTemperature(){
@@ -169,13 +193,14 @@ class TemperatureSystem : public ConverterSystem{
                     if(cin.fail() || cin.peek() != '\n'){
                         cin.clear();
                         cin.ignore(1000, '\n');
-                        throw runtime_error("Invalid input! Please enter a valid number.");
+                        throw runtime_error("Invalid input! Please enter a number that is acceptable with the following options: \n");
                     }
                     break;
                 }
                 catch(const exception& e)
                 {
                     std::cerr << e.what() << '\n';
+                    printOptions();
                 }
             }
 
@@ -339,6 +364,8 @@ int main(){
             break;
         }
         
+        object_converter_system.printHeader();
+        object_converter_system.printOptions();
         object_converter_system.getChoice();
     }
 
