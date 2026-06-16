@@ -219,7 +219,7 @@ void LengthSystem::centimeters_To(float length){
     std::cout << kilometers << " km \n";
 
     std::cout << "In Millimeters (mm): ";
-    float millimeters = meters * 10;
+    float millimeters = meters * 1000;
     std::cout << millimeters << " mm \n";
 
     std::cout << "In Miles: ";
@@ -251,7 +251,7 @@ void LengthSystem::millimeters_To(float length){
     std::cout << kilometers << " km \n";
 
     std::cout << "In Centimeters (cm): ";
-    float centimeters = meters / 10;
+    float centimeters = meters * 100;
     std::cout << centimeters << " cm \n";
 
     std::cout << "In Miles (mi): ";
@@ -280,31 +280,31 @@ void LengthSystem::mile_To(float length){
     std::cout << meters << " m \n";
 
     std::cout << "In Kilometers (km): ";
-    float kilometers = meters / 0.62137;
+    float kilometers = meters / 1000;
     std::cout << kilometers << " km \n";
 
     std::cout << "In Centimeters (cm): ";
-    float centimeters = meters / 0.0000062137;
+    float centimeters = meters * 100;
     std::cout << centimeters << " cm \n";
 
     std::cout << "In Millimeters (mm): ";
-    float millimeters = meters / 0.00000062137;
+    float millimeters = meters * 1000;
     std::cout << millimeters << " mm \n";
-    /*
+
     std::cout << "In feet: ";
-    float feet = length * 5280;
+    float feet = meters * 3.28084;
     std::cout << feet << " ft \n";
     
     std::cout << "In inches: ";
-    float inches = length * 63360;
+    float inches = meters * 39.3701;
     std::cout << inches << " in \n";
     
     std::cout << "In yards: ";
-    float yards = length * 1760;
+    float yards = meters * 1.09361;
     std::cout << yards << " yd \n";
-    */
+    
 }
-/*
+
 void LengthSystem::feet_To(float length){
     std::cout << "Length in feet: " << length << " ft" << std::endl;
     
@@ -313,91 +313,90 @@ void LengthSystem::feet_To(float length){
     std::cout << meters << " m \n";
 
     std::cout << "In Kilometers (km): ";
-    float kilometers = length / 3280.84;
+    float kilometers = meters / 1000;
     std::cout << kilometers << " km \n";
     
     std::cout << "In Centimeters (cm): ";
-    float centimeters = length * 30.48;
+    float centimeters = meters * 100;
     std::cout << centimeters << " cm \n";
-
+    
     std::cout << "In Millimeters (mm): ";
-    float millimeters = length * 304.8;
+    float millimeters = centimeters * 10;
     std::cout << millimeters << " mm \n";
-
+    
     std::cout << "In Miles: ";
-    float miles = length / 5280;
+    float miles = meters / 1609.34;
     std::cout << miles << " miles \n";
-
+    
     std::cout << "In inches: ";
-    float inches = length * 12;
+    float inches = meters * 39.3701;
     std::cout << inches << " in \n";
-
+    
     std::cout << "In yards: ";
-    float yards = length / 3;
+    float yards = meters * 1.09361;
     std::cout << yards << " yd \n";
 }
-
+    
 void LengthSystem::inches_To(float length){
     std::cout << "Length in inches: " << length << " in" << std::endl;
-
+    
     std::cout << "In Meters (m): ";
     float meters = length / 39.3701;
     std::cout << meters << " m \n";
-
+    
     std::cout << "In Kilometers (km): ";
-    float kilometers = length / 39370.1;
+    float kilometers = meters / 1000;
     std::cout << kilometers << " km \n";
 
     std::cout << "In Centimeters (cm): ";
-    float centimeters = length * 2.54;
+    float centimeters = meters * 100;
     std::cout << centimeters << " cm \n";
 
     std::cout << "In Millimeters (mm): ";
-    float millimeters = length * 25.4;
+    float millimeters = centimeters * 10;
     std::cout << millimeters << " mm \n";
 
     std::cout << "In Miles: ";
-    float miles = length / 63360;
+    float miles = meters / 1609.34;
     std::cout << miles << " miles \n";
 
     std::cout << "In feet: ";
-    float feet = length / 12;
+    float feet = meters * 3.28084;
     std::cout << feet << " ft \n";
 
     std::cout << "In yards: ";
-    float yards = length / 36;
+    float yards = meters * 1.09361;
     std::cout << yards << " yd \n";
 }
 
 void LengthSystem::yards_To(float length){
     std::cout << "Length in yards: " << length << " yd" << std::endl;
-
+    
     std::cout << "In Meters (m): ";
     float meters = length / 1.09361;
     std::cout << meters << " m \n";
-
+    
     std::cout << "In Kilometers (km): ";
-    float kilometers = length / 1093.61;
+    float kilometers = meters / 1000;
     std::cout << kilometers << " km \n";
-
+    
     std::cout << "In Centimeters (cm): ";
-    float centimeters = length * 91.44;
+    float centimeters = meters * 100;
     std::cout << centimeters << " cm \n";
-
+    
     std::cout << "In Millimeters (mm): ";
-    float millimeters = length * 914.4;
+    float millimeters = centimeters * 10;
     std::cout << millimeters << " mm \n";
-
+    
     std::cout << "In Miles: ";
-    float miles = length / 1760;
+    float miles = meters / 1609.34;
     std::cout << miles << " miles \n";
-
+    
     std::cout << "In feet: ";
-    float feet = length * 3;
+    float feet = meters * 3.28084;
     std::cout << feet << " ft \n";
-
+    
     std::cout << "In inches: ";
-    float inches = length * 36;
+    float inches = feet * 12;
     std::cout << inches << " in \n";
 }
-*/
