@@ -41,7 +41,7 @@ void LengthSystem::getChoice(){
             if(std::cin.fail() || std::cin.peek() != '\n'){
                 std::cin.clear();       
                 std::cin.ignore(1000, '\n');  
-                throw std::runtime_error("Invalid input!");
+                throw std::runtime_error("Invalid input! \n");
             }
 
             std::cout << "You have chosen : " << user_choice << std::endl;

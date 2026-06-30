@@ -154,15 +154,15 @@ void MassSystem::grams_To(float mass){
     std::cout << kilograms << " kg \n";
 
     std::cout << "In Milligrams (mg): ";
-    float milligrams = mass * 1000;
+    float milligrams =  kilograms * 1000000;
     std::cout << milligrams << " mg \n";
 
     std::cout << "In Pounds (lb): ";
-    float pounds = mass * 0.00220462;
+    float pounds = kilograms * 2.20462;
     std::cout << pounds << " lb \n";
 
     std::cout << "In Ounces (oz): ";
-    float ounces = mass * 0.035274;
+    float ounces = kilograms * 35.274;
     std::cout << ounces << " oz \n";
 }
 
@@ -174,15 +174,15 @@ void MassSystem::milligrams_To(float mass){
     std::cout << kilograms << " kg \n";
 
     std::cout << "In Grams (g): ";
-    float grams = mass / 1000;
+    float grams = kilograms * 1000;
     std::cout << grams << " g \n";
 
     std::cout << "In Pounds (lb): ";
-    float pounds = mass * 0.00000220462;
+    float pounds = kilograms * 2.20462;
     std::cout << pounds << " lb \n";
 
     std::cout << "In Ounces (oz): ";
-    float ounces = mass * 0.000035274;
+    float ounces = kilograms * 35.274;
     std::cout << ounces << " oz \n";
 }
 
@@ -195,15 +195,15 @@ void MassSystem::pounds_To(float mass){
     std::cout << kilograms << " kg \n";
 
     std::cout << "In Grams (g): ";
-    float grams = mass / 0.00220462;
+    float grams = kilograms * 1000;
     std::cout << grams << " g \n";
 
     std::cout << "In Milligrams (mg): ";
-    float milligrams = mass / 0.00000220462;
+    float milligrams = kilograms * 1000000;
     std::cout << milligrams << " mg \n";
 
     std::cout << "In Ounces (oz): ";
-    float ounces = mass * 16;
+    float ounces = kilograms * 35.274;
     std::cout << ounces << " oz \n";
 }
 
@@ -215,14 +215,14 @@ void MassSystem::ounces_To(float mass){
     std::cout << kilograms << " kg \n";
 
     std::cout << "In Grams (g): ";
-    float grams = mass / 0.035274;
+    float grams = kilograms * 1000;
     std::cout << grams << " g \n";
 
     std::cout << "In Milligrams (mg): ";
-    float milligrams = mass / 0.000035274;
+    float milligrams = kilograms * 1000000;
     std::cout << milligrams << " mg \n";
 
     std::cout << "In Pounds (lb): ";
-    float pounds = mass / 16;
+    float pounds = kilograms * 2.20462;
     std::cout << pounds << " lb \n";
 }
