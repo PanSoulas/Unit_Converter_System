@@ -1,6 +1,7 @@
 #include "include/ConverterSystem.h"
 #include "include/TemperatureSystem.h"
 #include "include/LengthSystem.h"
+#include "include/MassSystem.h"
 
 
 int main(){
@@ -20,23 +21,24 @@ int main(){
             object_length.startSystem();
         }
         
-        /*
         if (choosing == 'c' || choosing == 'C')
         {
-            
-            }
-            
-            if (choosing == 'd' || choosing == 'D')
-            {
-            }
-
-            if (choosing == 'e' || choosing == 'E')
-            {
-                
+            MassSystem object_mass;
+            object_mass.startSystem();
         }
         
-            if (choosing== 'f' || choosing == 'F')
-            {
+        /*
+        if (choosing == 'd' || choosing == 'D')
+        {
+        }
+            
+        if (choosing == 'e' || choosing == 'E')
+        {
+            
+        }
+        
+        if (choosing== 'f' || choosing == 'F')
+        {
                 
         }
 
