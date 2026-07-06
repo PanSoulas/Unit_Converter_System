@@ -90,8 +90,6 @@ Converts between:
 - Degrees (°)
 - Radians (rad)
 - Gradians (gon)
-- Minutes (arcmin)
-- Seconds (arcsec)
 
 ### E) Pressure
 Converts between:
