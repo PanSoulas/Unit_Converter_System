@@ -4,6 +4,9 @@
 #include "include/MassSystem.h"
 #include "include/AngleSystem.h"
 #include "include/PressureSystem.h"
+#include "include/SpeedSystem.h"
+
+
 
 int main(){
     ConverterSystem object_converter_system;
@@ -40,12 +43,13 @@ int main(){
             object_pressure.startSystem();
         }
         
-        /*
-        if (choosing== 'f' || choosing == 'F')
+        if (choosing == 'f' || choosing == 'F')
         {
-                
+            SpeedSystem object_speed;
+            object_speed.startSystem();
         }
-
+        
+        /*
             if (choosing == 'g' || choosing == 'G')
             {
                 
