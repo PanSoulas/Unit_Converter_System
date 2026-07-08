@@ -83,10 +83,7 @@ void SpeedSystem::startSystem(){
             break;
         }
 
-        std::cout << "Please insert the value of the speed you want to convert: " << std::endl;
-        std::cout << "Speed = ";
-        speed = getSpeed(speed);
-
+        
         if (user_choice == 1){
             std::cout << "You have chosen Meters per Second (m/s)!" << std::endl;
             std::cout << "Please insert the value of the speed you want to convert: " << std::endl;
@@ -132,19 +129,19 @@ void SpeedSystem::metersPerSecond_To(float speed){
 
     std::cout << "To Kilometers per Hour = ";
     float speed_kmh = speed * 3.6;
-    std::cout << " (km/h) ! \n";
+    std::cout << speed_kmh <<" (km/h) ! \n";
 
     std::cout << "To Miles per Hour = ";
     float speed_mph = speed * 2.23694;
-    std::cout << " (mph) ! \n";
+    std::cout << speed_mph <<" (mph) ! \n";
 
     std::cout << "To Knots = ";
     float speed_kn = speed * 1.943844;
-    std::cout << " (kn) ! \n";
+    std::cout << speed_kn << " (kn) ! \n";
     
     std::cout << "To Feet per Second = ";
     float speed_ftps = speed * 3.28084;
-    std::cout << " (ft/s) ! \n";
+    std::cout << speed_ftps << " (ft/s) ! \n";
 }
 
 void SpeedSystem::kilometersPerHour_To(float speed){
@@ -152,19 +149,19 @@ void SpeedSystem::kilometersPerHour_To(float speed){
 
     std::cout << "To Meters per Second = ";
     float speed_ms = speed / 3.6 ;
-    std::cout << " (m/s) ! \n";
+    std::cout << speed_ms << " (m/s) ! \n";
 
     std::cout << "To Miles per Hour = ";
     float speed_mph = speed_ms * 2.23694;
-    std::cout << " (mph) ! \n";
+    std::cout << speed_mph << " (mph) ! \n";
 
     std::cout << "To Knots = ";
     float speed_kn = speed_ms * 1.943844;
-    std::cout << " (kn) ! \n";
+    std::cout << speed_kn << " (kn) ! \n";
     
     std::cout << "To Feet per Second = ";
     float speed_ftps = speed_ms * 3.28084;
-    std::cout << " (ft/s) ! \n";
+    std::cout << speed_ftps << " (ft/s) ! \n";
 }
 
 
@@ -173,19 +170,19 @@ void SpeedSystem::milesPerHour_To(float speed){
 
     std::cout << "To Meters per Second = ";
     float speed_ms = speed * 0.44704;
-    std::cout << " (km/h) ! \n";
+    std::cout << speed_ms <<" (km/h) ! \n";
 
     std::cout << "To Kilometers per Hour = ";
     float speed_kmh = speed_ms * 3.6;
-    std::cout << " (mph) ! \n";
+    std::cout << speed_kmh << " (mph) ! \n";
 
     std::cout << "To Knots = ";
     float speed_kn = speed_ms * 1.943844;
-    std::cout << " (kn) ! \n";
+    std::cout << speed_kn << " (kn) ! \n";
     
     std::cout << "To Feet per Second = ";
     float speed_ftps = speed_ms * 3.28084;
-    std::cout << " (ft/s) ! \n";
+    std::cout << speed_ftps << " (ft/s) ! \n";
 }
 
 void SpeedSystem::knots_To(float speed){
@@ -193,19 +190,19 @@ void SpeedSystem::knots_To(float speed){
 
     std::cout << " To Meters per Second = ";
     float speed_ms = speed / 1.943844;
-    std::cout << " (m/s) ! \n";
+    std::cout << speed_ms << " (m/s) ! \n";
 
     std::cout << " To Kilometers per Hour = ";
     float speed_kmh = speed_ms * 3.6;
-    std::cout << " (km/h) ! \n";
+    std::cout << speed_kmh <<" (km/h) ! \n";
 
     std::cout << " To Miles per Hour = ";
     float speed_mph = speed_ms * 2.23694;
-    std::cout << " (mph) ! \n";
+    std::cout << speed_mph <<" (mph) ! \n";
 
     std::cout << "To Feet per Second = ";
     float speed_ftps = speed_ms * 3.28084;
-    std::cout << " (ft/s) ! \n"; 
+    std::cout << speed_ftps << " (ft/s) ! \n"; 
 }
 
 void SpeedSystem::feetPerSecond_To(float speed){
@@ -213,17 +210,17 @@ void SpeedSystem::feetPerSecond_To(float speed){
 
     std::cout << " To Meters per Second = ";
     float speed_ms = speed * 0.3048;
-    std::cout << " (m/s) ! \n";
+    std::cout << speed_ms <<" (m/s) ! \n";
 
     std::cout << " To Kilometers per Hour = ";
     float speed_kmh = speed_ms * 3.6;
-    std::cout << " (km/h) ! \n";
+    std::cout << speed_kmh << " (km/h) ! \n";
 
     std::cout << " To Miles per Hour = ";
     float speed_mph = speed_ms * 2.23694;
-    std::cout << " (mph) ! \n";
+    std::cout << speed_mph << " (mph) ! \n";
 
     std::cout << "To Knots = ";
     float speed_kn = speed_ms * 1.943844;
-    std::cout << " (kn) ! \n";
+    std::cout << speed_kn << " (kn) ! \n";
 }
