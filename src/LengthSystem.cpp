@@ -33,7 +33,8 @@ void LengthSystem::getChoice(){
     {
         try
         {
-            std::cout << "Choose : " ;
+            std::cout << "Choose : \n" ;
+            printOptions();
             std::cin >> user_choice;
             std::cout << '\n';
 
@@ -75,7 +76,8 @@ float LengthSystem::getLength(){
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
-            printOptions();
+            std::cout << "Please enter a valid number: \n";
+            std::cout << "Length = ";
         }
     }
 
@@ -158,6 +160,10 @@ void LengthSystem::startSystem(){
             length = getLength();
             yards_To(length);
         }        
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 

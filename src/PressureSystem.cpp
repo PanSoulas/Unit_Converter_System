@@ -64,7 +64,8 @@ float PressureSystem::getPressure() {
             break;
         } catch (const std::exception &e) {
             std::cerr << e.what() << '\n';
-            printOptions();
+            std::cout << "Please enter a valid number: \n";
+            std::cout << "Pressure = ";
         }
     }
 
@@ -125,6 +126,10 @@ void PressureSystem::startSystem() {
             pressure = getPressure();
             pounds_per_square_inch_To(pressure);
         }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 

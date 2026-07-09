@@ -33,7 +33,8 @@ void AngleSystem::getChoice(){
     {
         try
         {
-            std::cout << "Choose : " ;
+            std::cout << "Choose : \n" ;
+            printOptions();
             std::cin >> user_choice;
             std::cout << '\n';
 
@@ -75,7 +76,8 @@ float AngleSystem::getAngle(){
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
-            printOptions();
+            std::cout << "Please enter a valid number: \n";
+            std::cout << "Angle = ";
         }
     }
 
@@ -117,6 +119,10 @@ void AngleSystem::startSystem(){
             angle = getAngle();
             gradians_To(angle);
         }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 

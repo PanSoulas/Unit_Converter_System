@@ -75,7 +75,8 @@ float TemperatureSystem::getTemperature(){
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
-            printOptions();
+            std::cout << "Please enter a valid number: \n";
+            std::cout << "Temperature = ";
         }
     }
 
@@ -129,6 +130,10 @@ void TemperatureSystem::startSystem(){
             temperature = getTemperature();
             rankine_To(temperature);
         }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 

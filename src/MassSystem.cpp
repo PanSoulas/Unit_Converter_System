@@ -106,6 +106,10 @@ void MassSystem::startSystem(){
             mass = getMass();
             ounces_To(mass);
         }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 

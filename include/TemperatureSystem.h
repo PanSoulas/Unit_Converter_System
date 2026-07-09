@@ -9,7 +9,7 @@
 
 class TemperatureSystem : public ConverterSystem{
     protected:
-        unsigned int user_choice;
+        int user_choice;
         const std::vector<std::pair<int, std::string>> temperature_options = {{1, "Celsius"},
                                                         {2, "Fahrenheit"},
                                                         {3, "Kelvin"},
