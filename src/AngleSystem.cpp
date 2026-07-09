@@ -18,7 +18,7 @@ void AngleSystem::printOptions(){
     }
 }
 
-void AngleSystem::validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Angle_options){
+void AngleSystem::validateChoice(int user_choice, const std::vector<int> &acceptable_Angle_options){
     for (auto option : acceptable_Angle_options)
     {
         if(user_choice == option){
@@ -38,7 +38,7 @@ void AngleSystem::getChoice(){
             std::cout << '\n';
 
             //in case of missclick (bad state of cin)
-            if(std::cin.fail() || std::cin.peek() != '\n'){
+            if(std::cin.fail() || std::cin.peek() != '\n' || user_choice < 0){
                 std::cin.clear();       
                 std::cin.ignore(1000, '\n');  
                 throw std::runtime_error("Invalid input! \n");
@@ -94,22 +94,27 @@ void AngleSystem::startSystem(){
             break;
         }
 
-        std::cout << "Please insert the value of the angle you want to convert: " << std::endl;
-        std::cout << "Angle = ";
-        angle = getAngle();
-        
         if (user_choice == 1)
         {
+            std::cout << "Please insert the value of the angle you want to convert: " << std::endl;
+            std::cout << "Angle = ";
+            angle = getAngle();
             degrees_To(angle);
         }
 
         if (user_choice == 2)
         {
+            std::cout << "Please insert the value of the angle you want to convert: " << std::endl;
+            std::cout << "Angle = ";
+            angle = getAngle();
             radians_To(angle);
         }
         
         if (user_choice == 3)
         {
+            std::cout << "Please insert the value of the angle you want to convert: " << std::endl;
+            std::cout << "Angle = ";
+            angle = getAngle();
             gradians_To(angle);
         }
     }

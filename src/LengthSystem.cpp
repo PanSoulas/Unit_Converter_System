@@ -18,7 +18,7 @@ void LengthSystem::printOptions(){
 }
 
 
-void LengthSystem::validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Length_options){
+void LengthSystem::validateChoice(int user_choice, const std::vector<int> &acceptable_Length_options){
     for (auto option : acceptable_Length_options)
     {
         if(user_choice == option){
@@ -38,7 +38,7 @@ void LengthSystem::getChoice(){
             std::cout << '\n';
 
             //in case of missclick (bad state of cin)
-            if(std::cin.fail() || std::cin.peek() != '\n'){
+            if(std::cin.fail() || std::cin.peek() != '\n' || user_choice < 0){
                 std::cin.clear();       
                 std::cin.ignore(1000, '\n');  
                 throw std::runtime_error("Invalid input! \n");
@@ -94,48 +94,68 @@ void LengthSystem::startSystem(){
             std::cout << "Returning to Main Menu !" << std::endl;
             break;
         }
-
-        std::cout << "Please insert the value of the length you want to convert: " << std::endl;
-        std::cout << "Length = ";
-        length = getLength();
         
         if (user_choice == 1)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             meters_To(length);
         }
 
         if (user_choice == 2)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             kilometers_To(length);
         }
         
         if (user_choice == 3)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             centimeters_To(length);
         }
 
         if (user_choice == 4)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             millimeters_To(length);
         }
 
         if (user_choice == 5)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             mile_To(length);
         }
 
         if (user_choice == 6)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             feet_To(length);
         }
         
         if (user_choice == 7)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             inches_To(length);
         }
 
         if (user_choice == 8)
         {
+            std::cout << "Please insert the value of the length you want to convert: " << std::endl;
+            std::cout << "Length = ";
+            length = getLength();
             yards_To(length);
         }        
     }

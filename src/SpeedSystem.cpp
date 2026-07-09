@@ -14,7 +14,7 @@ void SpeedSystem::printOptions() {
 }
 
 
-void SpeedSystem::validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Speed_options) {
+void SpeedSystem::validateChoice(int user_choice, const std::vector<int> &acceptable_Speed_options) {
     for (auto option : acceptable_Speed_options) {
         if (user_choice == option) {
             return;
@@ -31,7 +31,7 @@ void SpeedSystem::getChoice() {
             std::cin >> user_choice;
             std::cout << '\n';
 
-            if (std::cin.fail() || std::cin.peek() != '\n') {
+            if (std::cin.fail() || std::cin.peek() != '\n' || user_choice < 0) {
                 std::cin.clear();
                 std::cin.ignore(1000, '\n');
                 throw std::runtime_error("Invalid input! \n");

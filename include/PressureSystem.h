@@ -6,7 +6,7 @@
 class PressureSystem : public ConverterSystem {
     protected:
         // User's choices
-        const std::vector<std::pair<unsigned int, std::string>> available_Pressure_options = {
+        const std::vector<std::pair<int, std::string>> available_Pressure_options = {
             {1, "Pascals (Pa)"},
             {2, "Kilopascals (kPa)"},
             {3, "Bar (bar)"},
@@ -15,8 +15,8 @@ class PressureSystem : public ConverterSystem {
             {6, "Pounds per Square Inch (psi)"},
             {0, "Exit"}
         };
-        const std::vector<unsigned int> acceptable_Pressure_options = {1, 2, 3, 4, 5, 6, 0};
-        unsigned int user_choice;
+        const std::vector<int> acceptable_Pressure_options = {1, 2, 3, 4, 5, 6, 0};
+        int user_choice;
         float pressure;
     public:
         PressureSystem() = default;
@@ -27,7 +27,7 @@ class PressureSystem : public ConverterSystem {
         
         void getChoice();
         
-        void validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Pressure_options);
+        void validateChoice(int user_choice, const std::vector<int> &acceptable_Pressure_options);
         
         float getPressure();
         
