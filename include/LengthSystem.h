@@ -10,7 +10,7 @@
 class LengthSystem : public ConverterSystem{
     protected:
         //User's options
-        const std::vector<std::pair<unsigned int, std::string>> available_Length_options = {{1, "Meters (m)"},
+        const std::vector<std::pair<int, std::string>> available_Length_options = {{1, "Meters (m)"},
                                                             {2, "Kilometers (km)"},
                                                             {3, "Centimeters (cm)"},
                                                             {4, "Millimeters (mm)"},
@@ -20,8 +20,8 @@ class LengthSystem : public ConverterSystem{
                                                             {8, "Yards "},
                                                             {0, "Exit"}
                                                             };
-        const std::vector<unsigned int> acceptable_Length_options = { 1, 2, 3, 4, 5, 6, 7, 8, 0};
-        unsigned int user_choice;
+        const std::vector<int> acceptable_Length_options = { 1, 2, 3, 4, 5, 6, 7, 8, 0};
+        int user_choice;
         float length;
     public:
         LengthSystem() = default;
@@ -32,7 +32,7 @@ class LengthSystem : public ConverterSystem{
 
         void getChoice();
 
-        void validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Length_options);
+        void validateChoice(int user_choice, const std::vector<int> &acceptable_Length_options);
 
         float getLength();
 

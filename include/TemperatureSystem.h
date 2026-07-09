@@ -9,13 +9,13 @@
 
 class TemperatureSystem : public ConverterSystem{
     protected:
-        unsigned int user_choice;
-        const std::vector<std::pair<unsigned int, std::string>> temperature_options = {{1, "Celsius"},
+        int user_choice;
+        const std::vector<std::pair<int, std::string>> temperature_options = {{1, "Celsius"},
                                                         {2, "Fahrenheit"},
                                                         {3, "Kelvin"},
                                                         {4, "Rankine"},
                                                         {0, "Exit Temperature System"}};
-        const std::vector<unsigned int> acceptable_temperature_options = {1, 2, 3, 4, 0};
+        const std::vector<int> acceptable_temperature_options = {1, 2, 3, 4, 0};
         float temperature;
     public:
         TemperatureSystem() = default;
@@ -26,7 +26,7 @@ class TemperatureSystem : public ConverterSystem{
 
         void printMenu();
 
-        void validate_User_Choice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_temperature_options );
+        void validate_User_Choice(int user_choice, const std::vector<int> &acceptable_temperature_options );
         float getTemperature();
         
         void startSystem();

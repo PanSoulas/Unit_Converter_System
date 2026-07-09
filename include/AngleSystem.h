@@ -5,12 +5,12 @@
 
 class AngleSystem : public ConverterSystem{
     protected:
-        const std::vector<std::pair<unsigned int, std::string>> available_Angle_options = {{1, "Degrees (°)"},
+        const std::vector<std::pair<int, std::string>> available_Angle_options = {{1, "Degrees (°)"},
                                                             {2, "Radians (rad)"},
                                                             {3, "Gradians (gon)"},
                                                             {0, "Exit"}};
-        const std::vector<unsigned int> acceptable_Angle_options = { 1, 2, 3, 0};
-        unsigned int user_choice;
+        const std::vector<int> acceptable_Angle_options = { 1, 2, 3, 0};
+        int user_choice;
         float angle;
     public:
         AngleSystem() = default;
@@ -21,7 +21,7 @@ class AngleSystem : public ConverterSystem{
 
         void getChoice();
 
-        void validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Angle_options);
+        void validateChoice(int user_choice, const std::vector<int> &acceptable_Angle_options);
 
         float getAngle();
 

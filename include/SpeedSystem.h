@@ -5,15 +5,15 @@
 
 class SpeedSystem : public ConverterSystem {
     protected:
-        const std::vector<std::pair<unsigned int, std::string>> available_Speed_options = { {1, "Meters per second (m/s)"},
+        const std::vector<std::pair<int, std::string>> available_Speed_options = { {1, "Meters per second (m/s)"},
                                                                                             {2, "Kilometers per hour (km/h)"},
                                                                                             {3, "Miles per hour (mph)"},
                                                                                             {4, "Knots (knot)"},
                                                                                             {5, "Feet per second (ft/s)"},
                                                                                             {0, "Exit"}
                                                                                         };
-        const std::vector<unsigned int> acceptable_Speed_options = {1, 2, 3, 4, 5, 0};
-        unsigned int user_choice;
+        const std::vector<int> acceptable_Speed_options = {1, 2, 3, 4, 5, 0};
+        int user_choice;
         float speed;
     public:
         SpeedSystem() = default;
@@ -24,7 +24,7 @@ class SpeedSystem : public ConverterSystem {
 
         void getChoice();
 
-        void validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Speed_options);
+        void validateChoice(int user_choice, const std::vector<int> &acceptable_Speed_options);
 
         float getSpeed(float speed);
 

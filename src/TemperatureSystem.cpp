@@ -17,7 +17,7 @@ void TemperatureSystem::printMenu(){
 
 
 
-void TemperatureSystem::validate_User_Choice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_temperature_options){
+void TemperatureSystem::validate_User_Choice(int user_choice, const std::vector<int> &acceptable_temperature_options){
     for (auto option : acceptable_temperature_options)
     {
         if(user_choice == option){
@@ -38,7 +38,7 @@ void TemperatureSystem::getChoice(){
             std::cout << '\n';
 
             //in case of missclick (bad state of cin)
-            if(std::cin.fail() || std::cin.peek() != '\n'){
+            if(std::cin.fail() || std::cin.peek() != '\n' || user_choice < 0){
                 std::cin.clear();       
                 std::cin.ignore(1000, '\n');  
                 throw std::runtime_error("Invalid input!");
@@ -55,45 +55,6 @@ void TemperatureSystem::getChoice(){
         }   
     }
 }
-
-
-void TemperatureSystem::startSystem(){
-    printMenu();    
-    while(true){
-        getChoice();
-        
-        if (user_choice == 0)
-        {
-            std::cout << "Returning to Main Menu !" << std::endl;
-            break;
-        }
-
-        std::cout << "Please insert the value of the temperature you want to convert: " << std::endl;
-        std::cout << "Temperature = ";
-        temperature = getTemperature();
-        
-        if (user_choice == 1)
-        {
-            celsius_To(temperature);
-        }
-
-        if (user_choice == 2)
-        {
-            fahrenheit_To(temperature);
-        }
-        
-        if (user_choice == 3)
-        {
-            kelvin_To(temperature);
-        }
-
-        if (user_choice == 4)
-        {
-            rankine_To(temperature);
-        }
-    }
-}
-
 
 float TemperatureSystem::getTemperature(){
     while (true)
@@ -114,11 +75,66 @@ float TemperatureSystem::getTemperature(){
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
-            printOptions();
+            std::cout << "Please enter a valid number: \n";
+            std::cout << "Temperature = ";
         }
     }
 
     return temperature;
+}
+
+void TemperatureSystem::startSystem(){
+    printMenu();    
+    while(true){
+        getChoice();
+        
+        if (user_choice == 0)
+        {
+            std::cout << "Returning to Main Menu !" << std::endl;
+            break;
+        }
+
+        
+        if (user_choice == 1)
+        {
+            std::cout << "You have chosen Celsius for conversion ! " << std::endl;
+            std::cout << "Please insert the value of the temperature you want to convert: " << std::endl;
+            std::cout << "Temperature = ";
+            temperature = getTemperature();
+            celsius_To(temperature);
+        }
+
+        if (user_choice == 2)
+        {
+            std::cout << "You have chosen Fahrenheit for conversion ! " << std::endl;
+            std::cout << "Please insert the value of the temperature you want to convert: " << std::endl;
+            std::cout << "Temperature = ";
+            temperature = getTemperature();
+            fahrenheit_To(temperature);
+        }
+        
+        if (user_choice == 3)
+        {
+            std::cout << "You have chosen Kelvin for conversion ! " << std::endl;
+            std::cout << "Please insert the value of the temperature you want to convert: " << std::endl;
+            std::cout << "Temperature = ";
+            temperature = getTemperature();
+            kelvin_To(temperature);
+        }
+
+        if (user_choice == 4)
+        {
+            std::cout << "You have chosen Rankine for conversion ! " << std::endl;
+            std::cout << "Please insert the value of the temperature you want to convert: " << std::endl;
+            std::cout << "Temperature = ";
+            temperature = getTemperature();
+            rankine_To(temperature);
+        }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
+    }
 }
 
 

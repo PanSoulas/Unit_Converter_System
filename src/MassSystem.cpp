@@ -17,7 +17,7 @@ void MassSystem::printOptions(){
     }
 }
 
-void MassSystem::validateChoice(unsigned int user_choice, const std::vector<unsigned int> &acceptable_Mass_options){
+void MassSystem::validateChoice(int user_choice, const std::vector<int> &acceptable_Mass_options){
     for (auto option : acceptable_Mass_options)
     {
         if(user_choice == option){
@@ -37,7 +37,7 @@ void MassSystem::getChoice(){
             std::cout << '\n';
 
             //in case of missclick (bad state of cin)
-            if(std::cin.fail() || std::cin.peek() != '\n'){
+            if(std::cin.fail() || std::cin.peek() != '\n' || user_choice < 0){
                 std::cin.clear();       
                 std::cin.ignore(1000, '\n');  
                 throw std::runtime_error("Invalid input! \n");
@@ -67,34 +67,49 @@ void MassSystem::startSystem(){
             break;
         }
 
-        std::cout << "Please insert the value of the mass you want to convert: " << std::endl;
-        std::cout << "Mass = ";
-        mass = getMass();
-
         if (user_choice == 1)
         {
+            std::cout << "Please insert the value of the mass you want to convert: " << std::endl;
+            std::cout << "Mass = ";
+            mass = getMass();
             kilograms_To(mass);
         }
 
         if (user_choice == 2)
         {
+            std::cout << "Please insert the value of the mass you want to convert: " << std::endl;
+            std::cout << "Mass = ";
+            mass = getMass();
             grams_To(mass);
         }
 
         if (user_choice == 3)
         {
+            std::cout << "Please insert the value of the mass you want to convert: " << std::endl;
+            std::cout << "Mass = ";
+            mass = getMass();
             milligrams_To(mass);
         }
 
         if (user_choice == 4)
         {
+            std::cout << "Please insert the value of the mass you want to convert: " << std::endl;
+            std::cout << "Mass = ";
+            mass = getMass();
             pounds_To(mass);
         }
 
         if (user_choice == 5)
         {
+            std::cout << "Please insert the value of the mass you want to convert: " << std::endl;
+            std::cout << "Mass = ";
+            mass = getMass();
             ounces_To(mass);
         }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 
