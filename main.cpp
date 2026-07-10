@@ -49,12 +49,12 @@ int main(){
             object_speed.startSystem();
         }
         
-        /*
-            if (choosing == 'g' || choosing == 'G')
-            {
-                
+        if (choosing == 'g' || choosing == 'G')
+        {
+            
         }
         
+        /*
         if (choosing == 'h' || choosing == 'H')
             {
                 
