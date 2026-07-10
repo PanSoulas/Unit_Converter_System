@@ -123,29 +123,30 @@ Converts between:
 - Revolutions per minute (RPM)
 
 ## Project Structure
-
 ```
 Unit_Converter_System/
 ├── README.md                 # This file
 ├── main.cpp                  # Entry point of the application
-├── ConversionSystem.h        # Parent class header
-├── ConversionSystem.cpp      # Parent class implementation
-├── Temperature.h             # Temperature converter header
-├── Temperature.cpp           # Temperature converter implementation
-├── Length.h                  # Length converter header
-├── Length.cpp                # Length converter implementation
-├── Mass.h                    # Mass converter header
-├── Mass.cpp                  # Mass converter implementation
-├── Angle.h                   # Angle converter header
-├── Angle.cpp                 # Angle converter implementation
-├── Pressure.h                # Pressure converter header
-├── Pressure.cpp              # Pressure converter implementation
-├── Speed.h                   # Speed converter header
-├── Speed.cpp                 # Speed converter implementation
-├── Energy.h                  # Energy converter header
-├── Energy.cpp                # Energy converter implementation
-├── Frequency.h               # Frequency converter header
-├── Frequency.cpp             # Frequency converter implementation
+├── src                       # Contains all the .cpp files
+  ├── ConversionSystem.cpp      # Parent class implementation
+  ├── Temperature.cpp           # Temperature converter implementation
+  ├── Length.cpp                # Length converter implementation
+  ├── Mass.cpp                  # Mass converter implementation
+  ├── Angle.cpp                 # Angle converter implementation
+  ├── Pressure.cpp              # Pressure converter implementation
+  ├── Speed.cpp                 # Speed converter implementation
+  ├── Energy.cpp                # Energy converter implementation
+  ├── Frequency.cpp             # Frequency converter implementation
+├── include                       # Contains all the .h files
+  ├── ConversionSystem.h        # Parent class header
+  ├── Temperature.h             # Temperature converter header
+  ├── Length.h                  # Length converter header
+  ├── Mass.h                    # Mass converter header
+  ├── Angle.h                   # Angle converter header
+  ├── Pressure.h                # Pressure converter header
+  ├── Speed.h                   # Speed converter header
+  ├── Energy.h                  # Energy converter header
+  ├── Frequency.h               # Frequency converter header
 └── Makefile                  # Build configuration (optional)
 ```
 
