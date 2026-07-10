@@ -16,4 +16,5 @@ add_executable(UnitConverter
     src/PressureSystem.cpp
     src/SpeedSystem.cpp
     src/EnergySystem.cpp
+    src/FrequencySystem.cpp
 )

@@ -5,7 +5,8 @@
 #include "include/AngleSystem.h"
 #include "include/PressureSystem.h"
 #include "include/SpeedSystem.h"
-
+#include "include/EnergySystem.h"
+#include "include/FrequencySystem.h"
 
 
 int main(){
@@ -51,16 +52,16 @@ int main(){
         
         if (choosing == 'g' || choosing == 'G')
         {
-            
+            EnergySystem object_energy;
+            object_energy.startSystem();
         }
         
-        /*
         if (choosing == 'h' || choosing == 'H')
-            {
-                
+        {
+            FrequencySystem object_frequency;
+            object_frequency.startSystem();    
         }
-    
-        */
+
         if (choosing == '0')
         {
             std::cout << "Closing \n";
