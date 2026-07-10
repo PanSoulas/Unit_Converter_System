@@ -8,9 +8,6 @@ A comprehensive **Object-Oriented C++ application** for converting physical meas
 - [Architecture](#architecture)
 - [Measurement Types](#measurement-types)
 - [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Requirements](#requirements)
 - [Contributing](#contributing)
 - [License](#license)
 
