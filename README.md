@@ -182,14 +182,7 @@ The **Unit Converter System** is a well-structured, educational project demonstr
 ### Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/PanSoulas/Unit_Converter_System.git
-cd Unit_Converter_System
-
-# Compile
-g++ -o UnitConverter *.cpp
-
-# Run
+g++ main.cpp src/*.cpp -I include -o UnitConverter
 ./UnitConverter
 ```
 
