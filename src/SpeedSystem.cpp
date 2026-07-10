@@ -66,7 +66,8 @@ float SpeedSystem::getSpeed(float speed) {
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
-            printOptions();
+            std::cout << "Please enter a valid number: \n";
+            std::cout << "Speed = ";
         }
     }
     return speed;
@@ -119,6 +120,10 @@ void SpeedSystem::startSystem(){
             speed = getSpeed(speed);
             feetPerSecond_To(speed);
         }
+        std::cout << "\n";
+        std::cout << "Would you like to continue ? \n";
+        std::cout << "Please choose between the following! \n";
+        printOptions();
     }
 }
 
