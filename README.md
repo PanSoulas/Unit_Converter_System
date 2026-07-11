@@ -180,14 +180,25 @@ This project is open source and available under the MIT License.
 
 The **Unit Converter System** is a well-structured, educational project demonstrating OOP principles in C++. With support for 8 measurement types and numerous unit conversions, it provides a practical tool for converting physical quantities while maintaining clean, modular code architecture.
 
-### Quick Start
+## Build & Run
 
+### Με CMake (προτεινόμενο)
 ```bash
-g++ main.cpp src/*.cpp -I include -o UnitConverter
+git clone https://github.com/PanSoulas/Unit_Converter_System.git
+cd Unit_Converter_System
+mkdir build && cd build
+cmake ..
+make
 ./UnitConverter
 ```
 
----
+### Με g++
+```bash
+git clone https://github.com/PanSoulas/Unit_Converter_System.git
+cd Unit_Converter_System
+g++ main.cpp src/*.cpp -I include -o UnitConverter
+./UnitConverter
+```
 
 **Happy Converting!** 
 
